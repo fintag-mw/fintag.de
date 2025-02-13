@@ -1,0 +1,19 @@
+---
+
+import LayoutInfopage from "../layouts/LayoutInfopage.astro";
+
+const frontmatter = {
+    title: "fintag - Nicht Gefunden",
+    description: "Die angegebene Seite konnte nicht gefunden werden",
+}
+---
+<LayoutInfopage frontmatter={frontmatter}>
+    <h1>Die Angegeben Seite konnte nicht gefunden werden (Status 404)</h1>
+    <p>
+        Die Seite <code>{Astro.url.pathname}</code> konnte nicht gefunden werden. Eventuell wurde sie gelöscht oder
+        hat nie existiert. Überprüfen Sie den link auf Schreibfehler und versuchen es erneut.
+    </p>
+    <p>
+        Alternativ kehren Sie zur <a href={Astro.site}>Startseite</a> zurück.
+    </p>
+</LayoutInfopage>
