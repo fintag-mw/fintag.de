@@ -1,0 +1,55 @@
+---
+import BeraterData from "./Newsletter/Berater.json";
+import type {Berater} from "./Newsletter/Berater";
+import BeraterImage from "./BeraterImage.astro";
+import Button from "./Button.astro";
+
+interface Props {
+    berater: string;
+    lazy?: boolean;
+}
+const { berater, lazy = true, class: className, ...rest } = Astro.props;
+const data = BeraterData[berater] as Berater;
+---
+
+<section class="flex flex-col lg:flex-row group bg-white dark:bg-base-200 border border-base-200 shadow rounded overflow-hidden w-full border-b-4 border-b-primary">
+    <figure class="lg:w-1/3 flex-none bg-base-200">
+        <div class="lg:m-1">
+            <BeraterImage berater={data} slot="image" lazy={lazy} />
+        </div>
+    </figure>
+
+    <div class="lg:w-2/3 flex-grow p-4 lg:pr-8 lg:group-even:-order-1 flex flex-col">
+        <h3 class="mt-0">{data.Name}</h3>
+
+        <ul class="mt-1 lg:text-lg text-neutral-700 dark:text-neutral-300">
+            {data.Qualifications.map(q => <li>{q}</li>)}
+        </ul>
+
+        {data.Biography && <div class="my-3 whitespace-pre-line hyphens-auto text-justify flex-1">
+            {data.Biography.split('\n').map(p => <p class="leading-snug mt-2">{p}</p>)}
+        </div>}
+
+        <div class:list={["flex flex-wrap justify-center lg:justify-start items-end gap-2 mt-3", {"flex-1 content-end": !data.Biography}]}>
+            {data.Email && <Button href={`mailto:${data.Email}`} label="E-Mail"
+                                   class="bg-primary text-primary-content w-32 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                </svg>
+            </Button>}
+            {data.Phone && <Button href={`tel:${data.Phone}`} label="Telefon"
+                                   class="bg-primary text-primary-content w-32 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg>
+            </Button>}
+            {data.LinkedIn && <Button href={data.LinkedIn} target="_blank" label="LinkedIn"
+                                      class="bg-primary text-primary-content w-32 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="size-6">
+                    <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
+                </svg>
+            </Button>}
+        </div>
+    </div>
+</section>

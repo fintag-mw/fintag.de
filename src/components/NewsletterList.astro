@@ -1,0 +1,20 @@
+---
+import type {CollectionEntry} from "astro:content";
+import NewsletterItem from "./NewsletterItem.astro";
+
+interface Props {
+    newsletters: Array<CollectionEntry<'newsletter'>>
+}
+
+const {newsletters}: Props = Astro.props;
+const newslettersByYear = Object.groupBy(newsletters, n => n.slug.substring(0, 4));
+---
+
+{Object.entries(newslettersByYear).map(([year, newsletter]) =>
+    <>
+        <h2>{year}</h2>
+        <dl class="my-6 grid grid-cols-[auto_1fr]">
+            {newsletter!.map(n => <NewsletterItem newsletter={n} />)}
+        </dl>
+    </>
+)}

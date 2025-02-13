@@ -1,0 +1,31 @@
+---
+import { getImage } from 'astro:assets'
+import faviconSrc from "./favicon.png";
+
+const favicon16 = await getImage({
+    src: faviconSrc,
+    width: 16,
+    height: 16,
+    format: 'png'
+})
+const appleTouchIcon = await getImage({
+    src: faviconSrc,
+    width: 180,
+    height: 180,
+    format: 'png'
+})
+const mstile = await getImage({
+    src: faviconSrc,
+    width: 144,
+    height: 144,
+    format: 'png'
+})
+---
+
+<link rel="shortcut icon" href={faviconSrc.src}>
+<link rel="icon" href={faviconSrc.src}>
+<link rel="icon" href={favicon16.src} sizes="16x16">
+<link rel="icon" href={faviconSrc.src} sizes="32x32">
+<link rel="apple-touch-icon" href={appleTouchIcon.src} sizes="180x180">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content={mstile.src}>

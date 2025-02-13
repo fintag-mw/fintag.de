@@ -1,0 +1,76 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Security
+<IfModule mod_headers.c>
+    Header unset ETag
+    Header append Cache-Control "public"
+    Header set Access-Control-Allow-Methods "GET"
+    Header set Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src *; font-src 'self'; connect-src 'self' https://*.fintag.de; child-src 'none'; form-action 'self'; upgrade-insecure-requests; base-uri https://www.fintag.de"
+</IfModule>
+FileETag None
+Options -Indexes
+
+<IfModule mod_speling.c>
+    checkspelling on
+    checkcaseonly off
+</IfModule>
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html                 "access plus 10 minutes"
+    ExpiresByType text/css                  "access plus 1 year"
+    ExpiresByType text/js                   "access plus 1 year"
+    ExpiresByType text/javascript           "access plus 1 year"
+    ExpiresByType application/javascript    "access plus 1 year"
+    ExpiresByType application/x-javascript  "access plus 1 year"
+
+    ExpiresByType image/x-icon              "access plus 1 year"
+    ExpiresByType image/jpg                 "access plus 1 year"
+    ExpiresByType image/jpeg                "access plus 1 year"
+    ExpiresByType image/png                 "access plus 1 year"
+    ExpiresByType image/webp                "access plus 1 year"
+    ExpiresByType image/svg+xml             "access plus 1 year"
+
+    ExpiresByType font/woff                 "access plus 1 year"
+    ExpiresByType font/woff2                "access plus 1 year"
+    ExpiresByType application/x-font-woff   "access plus 1 year"
+    ExpiresByType application/x-font-woff2  "access plus 1 year"
+</IfModule>
+<IfModule mod_deflate.c>
+    <filesmatch "\.(js|css|html|png|woff|woff2)$">
+        SetOutputFilter DEFLATE
+    </filesmatch>
+    AddOutputFilterByType DEFLATE text/html \
+                          DEFLATE text/css \
+                          DEFLATE text/js \
+                          DEFLATE text/javascript \
+                          DEFLATE application/javascript \
+                          DEFLATE application/x-javascript \
+                          DEFLATE image/x-icon \
+                          DEFLATE image/png \
+                          DEFLATE image/jpg \
+                          DEFLATE image/jpeg \
+                          DEFLATE image/webp \
+                          DEFLATE image/svg+xml \
+                          DEFLATE image/x-icon \
+                          DEFLATE font/opentype \
+                          DEFLATE font/otf \
+                          DEFLATE font/ttf \
+                          DEFLATE font/woff \
+                          DEFLATE font/woff2 \
+                          DEFLATE application/font-woff \
+                          DEFLATE application/font-woff2 \
+                          DEFLATE application/x-font-woff \
+                          DEFLATE application/x-font-woff2 \
+                          DEFLATE text/plain \
+                          DEFLATE application/xml \
+                          DEFLATE application/rss+xml
+</IfModule>
+
+# ErrorDocument 404 /404.html
+
+# Custom redirects
+# Redirect 301 "/schufa" "https://files.l.de/lde-typo3/Leipziger/Verkehrsbetriebe/AGB/SCHUFA/LVB_SCHUFA-Informationsblatt_01.pdf"

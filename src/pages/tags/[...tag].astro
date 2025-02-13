@@ -1,0 +1,42 @@
+---
+import type { GetStaticPaths } from "astro";
+import {type CollectionEntry, getCollection} from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import NewsletterList from "../../components/NewsletterList.astro";
+import NewsletterItem from "../../components/NewsletterItem.astro";
+
+type newsletterType = CollectionEntry<'newsletter'>;
+interface Props {
+    tag: string,
+    allNewsletter: Array<newsletterType>
+}
+
+export const getStaticPaths = (async () => {
+    const createSlug = function(tag: string) : string {
+        tag = tag.toLowerCase();
+        tag = tag.replaceAll('ä', 'ae');
+        tag = tag.replaceAll('ö', 'oe');
+        tag = tag.replaceAll('ü', 'ue');
+        tag = tag.replaceAll('ß', 'ss');
+
+        return encodeURIComponent(tag!.replaceAll(' ', '-'))
+    }
+
+    const newsletterEntries = await getCollection("newsletter") as Array<newsletterType>;
+    return [...new Set(newsletterEntries.flatMap(n => n.data.tags))].map(tag => ({
+        params: { tag: createSlug(tag) },
+        props: { tag: tag, allNewsletter: newsletterEntries },
+    }));
+}) satisfies GetStaticPaths;
+
+const { tag, allNewsletter }: Props = Astro.props;
+const newsletters = allNewsletter.filter(n => n.data.tags && n.data.tags!.includes(tag!));
+---
+
+<Layout title={`fintag - ${tag}`} description={`Newsletter mit dem Tag ${tag}.`}>
+    <main class="mx-auto px-4 lg:px-24 container my-6">
+        <h1>Tag: {tag}</h1>
+        <p>Newsletter mit dem Tag {tag}</p>
+        <NewsletterList newsletters={newsletters} />
+    </main>
+</Layout>

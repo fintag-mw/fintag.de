@@ -1,0 +1,59 @@
+---
+interface Props {
+	title: string;
+	description? : string;
+}
+
+const { title, description } = Astro.props;
+
+import Navigation from "../components/infra/Navigation.astro";
+import Footer from "../components/infra/Footer.astro";
+import Favicon from "../components/infra/Favicon.astro";
+
+import "@fontsource/noto-sans"
+import "@fontsource/inclusive-sans"
+import "../base.css";
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<link rel="canonical" href={new URL(Astro.url.pathname, "https://www.fintag.de") } />
+
+		<Favicon />
+
+		<slot name="head" />
+	</head>
+	<body class="font-body bg-base-100 text-text">
+		<Navigation />
+
+		<slot />
+
+		<Footer />
+	</body>
+</html>
+
+<script>
+	import {ez_consent} from "ez-consent";
+
+	ez_consent.init({
+		privacy_url: '/datenschutz' ,
+		texts: {
+			main: "Diese Webseite verwendet ausschließlich funktionale Cookies.",
+			buttons: {
+				ok: "Verstanden",
+				more: "Datenschutzerklärung"
+			}
+		},
+		more_button: {
+			target_attribute : "_self",
+			is_consenting: false
+		}
+	});
+</script>

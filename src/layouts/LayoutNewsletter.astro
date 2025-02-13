@@ -1,0 +1,105 @@
+---
+import Layout from "./Layout.astro";
+import type { CollectionEntry } from 'astro:content';
+import BeraterKarte from "../components/Newsletter/BeraterKarte.astro";
+
+type Props = CollectionEntry<'newsletter'>['data'];
+
+const {linktitle, title, description, author, authors, publishDate, lastmod, archive} : Props = Astro.props;
+---
+
+<Layout title={(linktitle && linktitle.length > 0) ? linktitle : title} description={description}>
+    <Fragment slot="head">
+        <meta property="og:site_name" content="fintag" />
+        <meta property="og:url" content={new URL(Astro.url.pathname, "https://www.fintag.de/") } />
+        <meta property="og:logo" content="https://www.fintag.de/img/fintag_logo.svg" />
+        <meta property="og:locale" content="de_de" />
+        <meta property="og:type" content="Article" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:author" content={author ?
+            author : (authors ? authors.join(", ") : "Team fintag")} />
+        <meta property="og:published_time" content={publishDate.toISOString()} />
+        {lastmod && <meta property="og:modified_time " content={lastmod.toISOString()} />}
+        {(archive && archive.date) && <meta property="og:expiration_time" content={archive.date.toISOString()} />}
+    </Fragment>
+
+    <main class="mx-auto px-4 lg:px-24 container my-6">
+        {(archive && archive.isArchived) && <div role="alert" class="flex flex-col lg:flex-row place-items-center bg-primary text-primary-content p-2 lg:p-8 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-24 lg:size-48 text-red-400 dark:text-red-600">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+            </svg>
+
+            <div class="text-center">
+                <h2 class="text-red-400 dark:text-red-600 mt-0">Newsletter Archiv</h2>
+                <p class="leading-snug my-6">
+                    Sie befinden sich in unserem Newsletter Archiv.
+                    <strong>Der Inhalt dieses Newsletters ist eventuell nicht mehr aktuell</strong>
+                    und erwähnte Aktionen oder Konditionen sind nicht mehr verfügbar. Sie finden aktuelle Newsletter
+                    unter
+                    <a class="underline" href="https://www.fintag.de/newsletter">
+                        www.fintag.de/newsletter
+                    </a>.
+                </p>
+                {archive.date &&
+                <p class="text-xl leading-snug">
+                    Dieser Inhalt wurde zum
+                    <time datetime={archive.date.toLocaleDateString()}>{
+                        archive.date.toLocaleDateString("de-de", {
+                            month: "2-digit",
+                            day: "2-digit",
+                            year: "numeric"
+                        })}</time>
+                    als archiviert markiert.
+                </p>}
+            </div>
+        </div>}
+
+        <h1 lang="de-de" class="hyphens-auto">{title}</h1>
+        <p>
+            Newsletter vom
+            <time datetime={publishDate.toISOString()}>{publishDate.toLocaleDateString("de-de", {
+                month: "2-digit",
+                day: "2-digit",
+                year: "numeric"
+            })}</time>
+        </p>
+        {
+            lastmod ? <p>
+                Zuletzt bearbeitet am
+                <time datetime={lastmod.toISOString()}>{lastmod.toLocaleDateString("de-de", {
+                    month: "2-digit",
+                    day: "2-digit",
+                    year: "numeric"
+                })}</time>
+            </p> : null
+        }
+        <p>
+            Beitrag von {author ? author : (authors ? authors.join(", ") : "Team fintag")}
+        </p>
+
+        <section class:list={[
+            "my-3 prose prose-neutral dark:prose-invert lg:prose-lg max-w-none text-justify lg:text-left",
+            "hyphens-auto break-words",
+            "prose-hr:my-3",
+            "[&_img]:prose-p:rounded-sm [&_img]:prose-p:shadow [&_img]:prose-p:mx-auto",
+            "has-[img]:prose-p:flex has-[img]:prose-p:flex-wrap",
+            "lg:prose-img:w-max", "lg:prose-img:max-w-full", "lg:prose-img:max-h-screen", "lg:prose-img:object-contain",
+            "prose-p:leading-snug prose-p:my-2",
+            "prose-li:leading-tight prose-li:m-0 prose-li:mb-2",
+            "prose-ul:list-square marker:prose-ul:text-primary",
+            "marker:prose-ol:text-text",
+        ]} lang="de-de">
+            <slot />
+
+            {publishDate.getFullYear() >= 2025 &&
+                    <div class:list={[
+                        "grid grid-cols-1 place-items-stretch gap-4 mt-6",
+                        {"lg:grid-cols-2": authors && authors.length > 1}
+                    ]}>
+                        {authors && authors.map(a => <BeraterKarte berater={a} />)}
+                    </div>}
+        </section>
+    </main>
+
+</Layout>

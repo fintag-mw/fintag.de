@@ -1,0 +1,16 @@
+---
+interface Props {
+    subject?: string;
+    email?: string;
+    phone?: string;
+}
+const { subject, email = "ms@fintag.de", phone="0711949020" } = Astro.props;
+---
+<div class="text-center shadow-xl p-6 mt-6 bg-primary text-primary-content not-prose">
+    <p>
+        Haben wir ihr Interesse geweckt? Vereinbaren Sie direkt kostenlos und unverbindlich
+        einen Termin in Unserem Hause über
+        <a class="underline hover:text-secondary" href={`mailto:${email}${subject ? `?subject=${subject}` : ""}`}>E-Mail</a> oder
+        <a class="underline hover:text-secondary" href={`tel:${phone}`}>Telefon</a>.
+    </p>
+</div>

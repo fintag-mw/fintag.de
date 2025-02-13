@@ -1,0 +1,26 @@
+---
+import {CollectionEntry} from "astro:content";
+
+interface Props {
+    newsletter: CollectionEntry<"newsletter">
+}
+
+const {newsletter} : Props = Astro.props;
+---
+
+<dt class="font-mono">
+    <time datetime={newsletter.data.publishDate.toISOString()}>{newsletter.data.publishDate
+        .toLocaleDateString("de-de", {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric"
+        })}</time>&nbsp;
+</dt>
+<dd>
+    <a class:list={[
+            "hover:text-primary",
+            {"text-red-700 dark:text-red-200": newsletter.data.archive?.isArchived === true}
+    ]} href={`/newsletter/${newsletter.slug}`}>
+        {newsletter.data.title}
+    </a>
+</dd>

@@ -1,0 +1,25 @@
+---
+import { Image, Picture } from 'astro:assets';
+import Button from "../Button.astro";
+import MediaCard from "../MediaCard.astro";
+interface Props {
+    title: string;
+    description?: string;
+    picture?: ImageMetadata;
+    image?: ImageMetadata;
+    link?: string;
+    linkLabel?: string;
+}
+const { title, description = "", picture, image, link, linkLabel = "Link" } = Astro.props;
+---
+<MediaCard allowSide={true}>
+    { !picture ? null :
+        <Picture slot="image" src={picture} alt="" class="max-lg:rounded-t-lg lg:rounded-l-lg" />}
+    { !image ? null :
+        <Image slot="image" class="object-cover object-left w-full lg:w-full lg:h-full max-lg:rounded-t-lg lg:rounded-l-lg" src={image} alt="" inferSize={true} />}
+
+    <h3 class="text-primary text-lg m-0">{title}</h3>
+    <p class="text-base my-3 text-justify hyphens-auto" lang="de-de">{description}</p>
+
+    <Button href={link} label={linkLabel} target="_blank" class="bg-primary text-primary-content" slot="actions" />
+</MediaCard>

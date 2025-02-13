@@ -1,0 +1,14 @@
+---
+const { class: className, ...rest } = Astro.props;
+---
+
+<details class:list={["cursor-pointer relative group", className]} {...rest}>
+    <summary class="list-none">
+        <slot />
+    </summary>
+    <div class="absolute top-10 right-0 bg-base-100 p-2 rounded drop-shadow
+                transition-opacity ease-in-out duration-500
+                opacity-0 group-open:opacity-100">
+        <slot name="dropdown" />
+    </div>
+</details>

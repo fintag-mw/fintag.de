@@ -1,0 +1,36 @@
+---
+import Button from "./Button.astro";
+import {Image, Picture} from "astro:assets";
+interface Props {
+    allowSide?: bool
+}
+const { allowSide = true, class: className, ...rest } = Astro.props;
+---
+
+<div class:list={[
+    "border-primary border",
+    "rounded-lg overflow-hidden",
+    "bg-base-200 shadow-xl not-prose mx-auto w-full max-w-3xl",
+    {"xl:flex": Astro.slots.has("image") && allowSide},
+    {"max-w-lg": !Astro.slots.has("image") || !allowSide},
+    className
+]} {...rest}>
+    {Astro.slots.has("image") &&
+        <figure class="overflow-hidden grid place-items-stretch bg-base-300 xl:max-w-sm">
+            <slot name="image" />
+        </figure>
+    }
+
+    <div class:list={[
+        "p-6 flex flex-col flex-1",
+        {"lg:min-w-96": Astro.slots.has("image") && allowSide}
+    ]}>
+        <div class="flex-1">
+            <slot />
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+            <slot name="actions" />
+        </div>
+    </div>
+</div>

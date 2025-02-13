@@ -1,0 +1,30 @@
+---
+import BeraterData from "./Berater.json";
+import Button from "../Button.astro";
+import MediaCard from "../MediaCard.astro";
+import type {Berater} from "./Berater";
+import BeraterImage from "../BeraterImage.astro";
+
+interface Props {
+    berater: string;
+}
+const { berater, class: className, ...rest } = Astro.props;
+const data = BeraterData[berater] as Berater;
+---
+
+<MediaCard allowSide={true} class:list={[className]} {...rest}>
+    <BeraterImage berater={data} slot="image" />
+
+    <h2 class="m-0 hyphens-auto" style={{color: data.Color ? data.Color : "" }}>{data.Name}</h2>
+    <p class="my-2 text-base">
+        {data.Qualifications.map((q: string) => <>{q}<br></>)}
+        <br>
+        {!data.Phone ? null : <>Telefon: {data.Phone}<br></>}
+        {!data.Fax ? null : <>Fax: {data.Fax}<br></>}
+        {!data.Email ? null : <>E-Mail: {data.Email}<br></>}
+    </p>
+    {!data.Email ? null :
+    <Button href={`mailto:${data.Email}`} label="Mail schreiben"
+            class="bg-primary text-primary-content mx-auto" slot="actions"
+            style={{backgroundColor: data.Color ? data.Color : "" }}/>}
+</MediaCard>

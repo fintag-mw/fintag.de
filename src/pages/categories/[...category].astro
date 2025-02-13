@@ -1,0 +1,34 @@
+---
+import type { GetStaticPaths } from "astro";
+import {type CollectionEntry, getCollection} from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import NewsletterList from "../../components/NewsletterList.astro";
+import NewsletterItem from "../../components/NewsletterItem.astro";
+
+type newsletterType = CollectionEntry<'newsletter'>;
+interface Props {
+    category: string,
+    allNewsletter: Array<newsletterType>
+}
+
+export const getStaticPaths = (async () => {
+    const newsletterEntries = await getCollection("newsletter") as Array<newsletterType>;
+    const routes = [...new Set(newsletterEntries.flatMap(n => n.data.categories))].map(category => ({
+        params: { category: encodeURIComponent(category!.replaceAll(' ', '-').toLowerCase()) },
+        props: { category: category, allNewsletter: newsletterEntries },
+    }));
+    console.log(routes);
+    return routes;
+}) satisfies GetStaticPaths;
+
+const { category, allNewsletter }: Props = Astro.props;
+const newsletters = allNewsletter.filter(n => n.data.tags && n.data.categories!.includes(category!));
+---
+
+<Layout title={`fintag - ${category}`} description={`Newsletter mit der Kategorie ${category}.`}>
+    <main class="mx-auto px-4 lg:px-24 container my-6">
+        <h1>Kategorie: {category}</h1>
+        <p>Newsletter mit der Kategorie {category}</p>
+        <NewsletterList newsletters={newsletters} />
+    </main>
+</Layout>

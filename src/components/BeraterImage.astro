@@ -1,0 +1,26 @@
+---
+import type {Berater} from "./Newsletter/Berater";
+interface Props {
+    berater: Berater;
+    lazy?: boolean;
+}
+const { berater, lazy = true, class: className, ...rest } = Astro.props;
+---
+
+{berater.Picture &&
+    <img class:list={["object-cover object-center w-full h-full", className]}
+         srcset=`
+            ${berater.Picture}.webp 1080w,
+            ${berater.Picture}_900.webp 900w,
+            ${berater.Picture}_650.webp 650w,
+            ${berater.Picture}_465.webp 465w,
+         `
+         sizes="
+            (max-width: 900px) 80vw,
+            30vw"
+         src={`${berater.Picture}.jpg`} width="1080" height="1350"
+         alt={`Bild von ${berater.Name}`} loading={lazy ? "lazy" : "eager"}>}
+{berater.Image &&
+    <img class:list={["object-cover object-center w-full h-full", className]}
+         width="1080" height="1350"
+         src={`${berater.Image}`} alt={`Bild von ${berater.Name}`} loading={lazy ? "lazy" : "eager"} {...rest} >}
