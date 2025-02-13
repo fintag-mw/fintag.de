@@ -13,6 +13,8 @@ import Favicon from "../components/infra/Favicon.astro";
 import "@fontsource/noto-sans"
 import "@fontsource/inclusive-sans"
 import "../base.css";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -24,7 +26,7 @@ import "../base.css";
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
-		<link rel="canonical" href={new URL(Astro.url.pathname, "https://www.fintag.de") } />
+		<link rel="canonical" href={canonicalURL} />
 
 		<Favicon />
 

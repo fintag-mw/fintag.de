@@ -3,7 +3,11 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	safelist: [{pattern: /cookie-consent.*/ },],
+	safelist: [
+		{pattern: /cookie-consent.*/ },
+		{pattern: /(border|text|bg)-(primary|secondary|accent)/, variants: ['hover']},
+		{pattern: /(border|text|bg)-(primary|secondary|accent)-content/, variants: ['hover']},
+	],
 	theme: {
 		extend: {
 			aspectRatio: {
@@ -17,7 +21,9 @@ export default {
 				'primary': 'var(--primary)',
 				'primary-content': 'var(--primary-content)',
 				'secondary': 'var(--secondary)',
+				'secondary-content': 'var(--secondary--content)',
 				'accent': 'var(--accent)',
+				'accent--content': 'var(--accent--content)',
 			},
 			listStyleType: {
 				square: 'square',

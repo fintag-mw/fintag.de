@@ -1,11 +1,13 @@
 ---
 import Layout from "./Layout.astro";
 import type { CollectionEntry } from 'astro:content';
-import BeraterKarte from "../components/Newsletter/BeraterKarte.astro";
+import BeraterKarte from "@components/Newsletter/BeraterKarte.astro";
+import Badge from "@components/Badge.astro";
+import {makeLinkSafe} from "../utils";
 
 type Props = CollectionEntry<'newsletter'>['data'];
 
-const {linktitle, title, description, author, authors, publishDate, lastmod, archive} : Props = Astro.props;
+const {linktitle, title, description, author, authors, publishDate, lastmod, archive, categories, tags} : Props = Astro.props;
 ---
 
 <Layout title={(linktitle && linktitle.length > 0) ? linktitle : title} description={description}>
@@ -56,6 +58,15 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
         </div>}
 
         <h1 lang="de-de" class="hyphens-auto">{title}</h1>
+        <div class="grid grid-cols-1 gap-2 my-2">
+            <div class="flex flex-wrap gap-1">
+                {categories && categories.map(c => <Badge href={`/categories/${makeLinkSafe(c)}`}>{c}</Badge>)}
+            </div>
+            <div class="flex flex-wrap gap-1">
+                {tags && tags.map(t => <Badge color="secondary" href={`/tags/${makeLinkSafe(t)}`}>{t}</Badge>)}
+            </div>
+        </div>
+
         <p>
             Newsletter vom
             <time datetime={publishDate.toISOString()}>{publishDate.toLocaleDateString("de-de", {
@@ -65,7 +76,7 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
             })}</time>
         </p>
         {
-            lastmod ? <p>
+            (lastmod && lastmod > publishDate) ? <p>
                 Zuletzt bearbeitet am
                 <time datetime={lastmod.toISOString()}>{lastmod.toLocaleDateString("de-de", {
                     month: "2-digit",

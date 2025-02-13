@@ -4,6 +4,7 @@ import {type CollectionEntry, getCollection} from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import NewsletterList from "../../components/NewsletterList.astro";
 import NewsletterItem from "../../components/NewsletterItem.astro";
+import {makeLinkSafe} from "../../utils";
 
 type newsletterType = CollectionEntry<'newsletter'>;
 interface Props {
@@ -12,19 +13,9 @@ interface Props {
 }
 
 export const getStaticPaths = (async () => {
-    const createSlug = function(tag: string) : string {
-        tag = tag.toLowerCase();
-        tag = tag.replaceAll('ä', 'ae');
-        tag = tag.replaceAll('ö', 'oe');
-        tag = tag.replaceAll('ü', 'ue');
-        tag = tag.replaceAll('ß', 'ss');
-
-        return encodeURIComponent(tag!.replaceAll(' ', '-'))
-    }
-
     const newsletterEntries = await getCollection("newsletter") as Array<newsletterType>;
     return [...new Set(newsletterEntries.flatMap(n => n.data.tags))].map(tag => ({
-        params: { tag: createSlug(tag) },
+        params: { tag: makeLinkSafe(tag!) },
         props: { tag: tag, allNewsletter: newsletterEntries },
     }));
 }) satisfies GetStaticPaths;

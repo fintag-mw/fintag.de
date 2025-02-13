@@ -1,0 +1,27 @@
+---
+
+interface Props {
+    href?: string,
+    color?: string,
+}
+
+const { href, color } : Props = Astro.props;
+const urlBase = new URL(Astro.url.pathname, Astro.site);
+
+const c = `border-${color} hover:bg-${color} hover:text-${color}-content`;
+const classes = [
+    "border text-sm p-0.5 px-4 text-sm rounded-full",
+    {"border-primary hover:bg-primary hover:text-primary-content": !color},
+    {[c]: color}
+];
+---
+
+{
+    href ?
+    <a class:list={classes} href={new URL(href, urlBase)}>
+        <slot />
+    </a> :
+    <span class:list={classes}>
+        <slot />
+    </span>
+}

@@ -11,7 +11,9 @@
         --primary: #00378b;
         --primary-content: #ffffff;
         --secondary: #7B92B2;
+        --secondary-content: #ffffff;
         --accent: #67CBA0;
+        --accent-content: #ffffff;
     }
     h1, h2, h3, h4, h5, h6 {
         @apply font-heading;
@@ -43,7 +45,9 @@
             --primary: #3F9FFF;
             --primary-content: #000000;
             --secondary: #4d6484;
+            --secondary--content: #ffffff;
             --accent: #34986d;
+            --accent--content: #ffffff;
         }
     }
 }
