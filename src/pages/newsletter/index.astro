@@ -1,18 +1,10 @@
 ---
 import {type CollectionEntry, getCollection} from "astro:content";
-import Layout from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import NewsletterList from "@components/NewsletterList.astro";
-import NewsletterItem from "@components/NewsletterItem.astro";
 
 type newsletterType = CollectionEntry<'newsletter'>;
 const allNewsletter  = await getCollection("newsletter") as Array<newsletterType>;
-
-const newsletterByYear = {
-    "2022": allNewsletter.filter(value => value.slug.startsWith("2022")),
-    "2023": allNewsletter.filter(value => value.slug.startsWith("2023")),
-    "2024": allNewsletter.filter(value => value.slug.startsWith("2024")),
-    "2025": allNewsletter.filter(value => value.slug.startsWith("2025")),
-}
 ---
 
 <Layout title="fintag - Newsletter Archiv">
