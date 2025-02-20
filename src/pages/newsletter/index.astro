@@ -31,7 +31,7 @@ const count = function(newsletters: Array<newsletterType>, dataName: ("categorie
                     .sort((p1, p2) => compare(p1.amount, p2.amount, true) || compare(p1.category, p2.category))
                     .map(({category, amount}) =>
                         <li>
-                            <Badge href={`/categories/${makeLinkSafe(category)}`}>
+                            <Badge href={`/categories/${makeLinkSafe(category)}/`}>
                                 {category}
                                 ({amount})
                             </Badge>
@@ -48,7 +48,7 @@ const count = function(newsletters: Array<newsletterType>, dataName: ("categorie
                     .sort((p1, p2) => compare(p1.amount, p2.amount, true) || compare(p1.tag, p2.tag))
                     .map(({tag, amount}) =>
                         <li>
-                            <Badge color="secondary" href={`/tags/${makeLinkSafe(tag)}`}>
+                            <Badge color="secondary" href={`/tags/${makeLinkSafe(tag)}/`}>
                                 {tag}
                                 ({amount})
                             </Badge>

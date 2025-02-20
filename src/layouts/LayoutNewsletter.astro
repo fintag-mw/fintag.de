@@ -60,10 +60,10 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
         <h1 lang="de-de" class="hyphens-auto">{title}</h1>
         <div class="grid grid-cols-1 gap-2 my-2">
             <div class="flex flex-wrap gap-1">
-                {categories && categories.map(c => <Badge href={`/categories/${makeLinkSafe(c)}`}>{c}</Badge>)}
+                {categories && categories.map(c => <Badge href={`/categories/${makeLinkSafe(c)}/`}>{c}</Badge>)}
             </div>
             <div class="flex flex-wrap gap-1">
-                {tags && tags.map(t => <Badge color="secondary" href={`/tags/${makeLinkSafe(t)}`}>{t}</Badge>)}
+                {tags && tags.map(t => <Badge color="secondary" href={`/tags/${makeLinkSafe(t)}/`}>{t}</Badge>)}
             </div>
         </div>
 

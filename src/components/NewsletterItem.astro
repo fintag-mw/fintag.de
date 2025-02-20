@@ -1,11 +1,12 @@
 ---
-import {CollectionEntry} from "astro:content";
+import type {CollectionEntry} from "astro:content";
 
 interface Props {
     newsletter: CollectionEntry<"newsletter">
 }
 
 const {newsletter} : Props = Astro.props;
+const urlBase = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <dt class="font-mono">
@@ -20,7 +21,7 @@ const {newsletter} : Props = Astro.props;
     <a class:list={[
             "hover:text-primary",
             {"text-red-700 dark:text-red-200": newsletter.data.archive?.isArchived === true}
-    ]} href={`/newsletter/${newsletter.slug}`}>
+    ]} href={new URL(`/newsletter/${newsletter.slug}/`, urlBase)}>
         {newsletter.data.title}
     </a>
 </dd>
