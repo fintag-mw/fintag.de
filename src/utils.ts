@@ -7,3 +7,9 @@ export function makeLinkSafe(word: string) : string {
 
     return encodeURIComponent(word!.replaceAll(' ', '-'))
 }
+
+export function compare(a : any, b : any, reverse: boolean = false) : -1|0|1 {
+    if (a > b) return reverse ? -1 : +1;
+    if (a < b) return reverse ? +1 : -1;
+    return 0;
+}

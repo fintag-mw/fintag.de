@@ -1,6 +1,7 @@
 ---
 import type {CollectionEntry} from "astro:content";
 import NewsletterItem from "./NewsletterItem.astro";
+import {compare} from "../utils";
 
 interface Props {
     newsletters: Array<CollectionEntry<'newsletter'>>
@@ -10,11 +11,15 @@ const {newsletters}: Props = Astro.props;
 const newslettersByYear = Object.groupBy(newsletters, n => n.slug.substring(0, 4));
 ---
 
-{Object.entries(newslettersByYear).map(([year, newsletter]) =>
+{Object.entries(newslettersByYear)
+    .map(entries => ({year: parseInt(entries[0]), newsletter: entries[1]}))
+    .sort((nby1, nby2) => compare(nby1.year, nby2.year, true))
+    .map(({year, newsletter}) =>
     <>
         <h2>{year}</h2>
         <dl class="my-6 grid grid-cols-[auto_1fr]">
-            {newsletter!.map(n => <NewsletterItem newsletter={n} />)}
+            {newsletter!.sort((n1, n2) => compare(n1.data.publishDate, n2.data.publishDate, true)).map(n =>
+                    <NewsletterItem newsletter={n} />)}
         </dl>
     </>
 )}
