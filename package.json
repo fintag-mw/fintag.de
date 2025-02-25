@@ -22,6 +22,7 @@
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "astro": "4.16.1",
+    "astro-opengraph-images": "^1.11.7",
     "ez-consent": "^1.2.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

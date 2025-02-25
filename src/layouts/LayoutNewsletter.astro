@@ -4,8 +4,11 @@ import type { CollectionEntry } from 'astro:content';
 import BeraterKarte from "@components/Newsletter/BeraterKarte.astro";
 import Badge from "@components/Badge.astro";
 import {makeLinkSafe} from "../utils";
+import { getImagePath } from "astro-opengraph-images";
 
 type Props = CollectionEntry<'newsletter'>['data'];
+
+const openGraphImageUrl = getImagePath({ url: Astro.url, site: Astro.site });
 
 const {linktitle, title, description, author, authors, publishDate, lastmod, archive, categories, tags} : Props = Astro.props;
 ---
@@ -25,6 +28,7 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
         <meta property="og:published_time" content={publishDate.toISOString()} />
         {lastmod && <meta property="og:modified_time " content={lastmod.toISOString()} />}
         {(archive && archive.date) && <meta property="og:expiration_time" content={archive.date.toISOString()} />}
+        <meta property="og:image" content={openGraphImageUrl} />
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
@@ -32,6 +36,7 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
         <meta property="twitter:url" content={new URL(Astro.url.pathname, Astro.site) }>
         <meta name="twitter:title" content={title}>
         <meta name="twitter:description" content={description}>
+        <meta name="twitter:image" content={openGraphImageUrl}>
     </Fragment>
 
     <main class="mx-auto px-4 lg:px-24 container my-6">
