@@ -12,8 +12,9 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
 
 <Layout title={(linktitle && linktitle.length > 0) ? linktitle : title} description={description}>
     <Fragment slot="head">
+        <!-- Open Graph -->
         <meta property="og:site_name" content="fintag" />
-        <meta property="og:url" content={new URL(Astro.url.pathname, "https://www.fintag.de/") } />
+        <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site) } />
         <meta property="og:logo" content="https://www.fintag.de/img/fintag_logo.svg" />
         <meta property="og:locale" content="de_de" />
         <meta property="og:type" content="Article" />
@@ -24,6 +25,13 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
         <meta property="og:published_time" content={publishDate.toISOString()} />
         {lastmod && <meta property="og:modified_time " content={lastmod.toISOString()} />}
         {(archive && archive.date) && <meta property="og:expiration_time" content={archive.date.toISOString()} />}
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content={Astro.site}>
+        <meta property="twitter:url" content={new URL(Astro.url.pathname, Astro.site) }>
+        <meta name="twitter:title" content={title}>
+        <meta name="twitter:description" content={description}>
     </Fragment>
 
     <main class="mx-auto px-4 lg:px-24 container my-6">
