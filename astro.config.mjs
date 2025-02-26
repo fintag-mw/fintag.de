@@ -12,6 +12,9 @@ import fs from 'node:fs';
 export default defineConfig({
     site: "https://www.fintag.de",
     redirects: {
+        // old sitemap link
+        "/index.xml": "/sitemap-index.xml",
+
         // old RSS link
         "/newsletter/index.xml": "/newsletter/rss.xml",
 
