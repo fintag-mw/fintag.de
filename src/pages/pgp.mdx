@@ -12,8 +12,8 @@ Mails an info@fintag.de können Sie zur erhöhen Sicherheit verschlüsseln.
 Mehr infos über das Verschlüsseln von E-Mails erhalten Sie auf der Seite des
 <a target="_blank" href="https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Onlinekommunikation/Verschluesselt-kommunizieren/E-Mail-Verschluesselung/E-Mail-Verschluesselung-in-der-Praxis/e-mail-verschluesselung-in-der-praxis.html">Bundesamt für Sicherheit und Informationstechnik</a>.
 
-<button className="my-3 flex gap-2 justify-center py-2 px-4 rounded-sm hover:bg-secondary transition-colors ease-in-out duration-200 cursor-pointer bg-primary text-primary-content"
+<button className="my-3 flex gap-2 justify-center py-2 px-4 rounded-xs hover:bg-secondary transition-colors ease-in-out duration-200 cursor-pointer bg-primary text-primary-content"
         onClick={`navigator.clipboard.writeText(document.getElementById('pgp').innerText);`}>Kopieren</button>
 
-<div id="pgp" className="overflow-x-auto p-2 rounded-sm bg-base-200 whitespace-pre font-mono max-w-fit">{pgp}</div>
+<div id="pgp" className="overflow-x-auto p-2 rounded-xs bg-base-200 whitespace-pre font-mono max-w-fit">{pgp}</div>
 

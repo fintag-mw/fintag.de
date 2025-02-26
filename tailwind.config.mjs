@@ -3,11 +3,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	safelist: [
-		{pattern: /cookie-consent.*/ },
-		{pattern: /(border|text|bg)-(primary|secondary|accent)/, variants: ['hover']},
-		{pattern: /(border|text|bg)-(primary|secondary|accent)-content/, variants: ['hover']},
-	],
+
 	theme: {
 		extend: {
 			aspectRatio: {
@@ -68,6 +64,5 @@ export default {
 			normal: '400',
 			bold: '700',
 		},
-	},
-	plugins: [require("@tailwindcss/typography")],
+	}
 }

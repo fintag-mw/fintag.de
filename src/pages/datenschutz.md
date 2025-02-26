@@ -538,7 +538,7 @@ Recht, zu erwirken, dass die personenbezogenen Daten direkt von einem Verantwort
 übermittelt werden, soweit dies technisch machbar ist und sofern hiervon nicht die Rechte und Freiheiten anderer Personen
 beeinträchtigt werden.
 
-<div class="p-4 border bg-base-200 rounded-sm">
+<div class="p-4 border bg-base-200 rounded-xs">
 
 ### 14.7 Widerspruch Art. 21 DS-GVO
 Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung

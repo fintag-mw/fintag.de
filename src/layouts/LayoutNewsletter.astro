@@ -113,13 +113,13 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
             "my-3 prose prose-neutral dark:prose-invert lg:prose-lg max-w-none text-justify lg:text-left",
             "hyphens-auto break-words",
             "prose-hr:my-3",
-            "[&_img]:prose-p:rounded-sm [&_img]:prose-p:shadow [&_img]:prose-p:mx-auto",
-            "has-[img]:prose-p:flex has-[img]:prose-p:flex-wrap",
+            "prose-p:[&_img]:rounded-xs prose-p:[&_img]:shadow-sm prose-p:[&_img]:mx-auto",
+            "prose-p:has-[img]:flex prose-p:has-[img]:flex-wrap",
             "lg:prose-img:w-max", "lg:prose-img:max-w-full", "lg:prose-img:max-h-screen", "lg:prose-img:object-contain",
             "prose-p:leading-snug prose-p:my-2",
             "prose-li:leading-tight prose-li:m-0 prose-li:mb-2",
-            "prose-ul:list-square marker:prose-ul:text-primary",
-            "marker:prose-ol:text-text",
+            "prose-ul:list-square prose-ul:marker:text-primary",
+            "prose-ol:marker:text-text",
         ]} lang="de-de">
             <slot />
 
@@ -131,6 +131,13 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
                         {authors && authors.map((a: string) => <BeraterKarte berater={a} />)}
                     </div>}
         </section>
+
+        <span class:list={[
+            "hidden",
+            "border-primary border-secondary border-accent",
+            "bg-primary bg-secondary bg-accent",
+            "text-primary-content text-secondary-content text-accent-content",
+        ]}></span>
     </main>
 
 </Layout>

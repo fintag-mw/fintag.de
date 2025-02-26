@@ -1,6 +1,51 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@config '../tailwind.config.mjs';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility cookie-consent {
+  @apply flex flex-col m-2 p-6 gap-4 max-w-full
+               fixed max-md:left-0 bottom-0 right-0 border border-base-200
+               bg-base-100 text-text rounded-sm shadow-2xl shadow-black;
+}
+
+@utility cookie-consent__text {
+  @apply text-center md:text-left;
+}
+
+@utility cookie-consent__buttons {
+  @apply flex flex-row flex-wrap gap-4 justify-center sm:justify-end;
+}
+
+@utility cookie-consent__buttons__close {
+  @apply cursor-pointer flex gap-2 justify-center py-2 px-4 rounded-xs w-full sm:w-48
+               hover:bg-secondary transition-colors ease-in-out duration-200;
+  @apply bg-primary text-primary-content;
+}
+
+@utility cookie-consent__buttons__read-more {
+  @apply cursor-pointer flex gap-2 justify-center py-2 px-4 rounded-xs w-full sm:w-48
+               hover:bg-secondary transition-colors ease-in-out duration-200;
+  @apply border border-black dark:border-white hover:border-secondary;
+}
 
 @layer base {
     :root {
@@ -49,30 +94,5 @@
             --accent: #34986d;
             --accent--content: #ffffff;
         }
-    }
-}
-
-@layer utilities {
-    .cookie-consent {
-        @apply flex flex-col m-2 p-6 gap-4 max-w-full
-               fixed max-md:left-0 bottom-0 right-0 border border-base-200
-               bg-base-100 text-text rounded shadow-2xl shadow-black;
-    }
-    .cookie-consent__text {
-        @apply text-center md:text-left
-    }
-    .cookie-consent__buttons {
-        @apply flex flex-row flex-wrap gap-4 justify-center sm:justify-end;
-    }
-    .cookie-consent__buttons__close,
-    .cookie-consent__buttons__read-more {
-        @apply cursor-pointer flex gap-2 justify-center py-2 px-4 rounded-sm w-full sm:w-48
-               hover:bg-secondary transition-colors ease-in-out duration-200;
-    }
-    .cookie-consent__buttons__close {
-        @apply bg-primary text-primary-content;
-    }
-    .cookie-consent__buttons__read-more {
-        @apply border border-black dark:border-white hover:border-secondary;
     }
 }

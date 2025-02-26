@@ -12,14 +12,14 @@ const { berater, lazy = true, class: className, ...rest } = Astro.props;
 const data = BeraterData[berater] as Berater;
 ---
 
-<section class="flex flex-col lg:flex-row group bg-white dark:bg-base-200 border border-base-200 shadow rounded overflow-hidden w-full border-b-4 border-b-primary">
+<section class="flex flex-col lg:flex-row group bg-white dark:bg-base-200 border border-base-200 shadow-sm rounded-sm overflow-hidden w-full border-b-4 border-b-primary">
     <figure class="lg:w-1/3 flex-none bg-base-200">
         <div class="lg:m-1">
             <BeraterImage berater={data} slot="image" lazy={lazy} />
         </div>
     </figure>
 
-    <div class="lg:w-2/3 flex-grow p-4 lg:pr-8 lg:group-even:-order-1 flex flex-col">
+    <div class="lg:w-2/3 grow p-4 lg:pr-8 lg:group-even:-order-1 flex flex-col">
         <h3 class="mt-0">{data.Name}</h3>
 
         <ul class="mt-1 lg:text-lg text-neutral-700 dark:text-neutral-300">

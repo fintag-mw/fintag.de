@@ -17,12 +17,12 @@ type Newsletter = {
 }
 
 function Article(newsletter: Newsletter) {
-    return <div className="rounded bg-white dark:bg-base-200 text-text border-l-4 border-primary w-full max-w-5xl">
+    return <div className="rounded-sm bg-white dark:bg-base-200 text-text border-l-4 border-primary w-full max-w-5xl">
         <div className="p-4">
             <h2 className="mt-0">{newsletter.title}</h2>
             <p className="flex gap-1 my-1 flex-wrap">
                 {newsletter.categories.map(category => {
-                    let classNames = "px-2 rounded-sm";
+                    let classNames = "px-2 rounded-xs";
                     if (category.role === "primary") {
                         classNames += " bg-primary text-primary-content";
                     } else if (category.role === "secondary") {
@@ -56,7 +56,7 @@ function Article(newsletter: Newsletter) {
                 {newsletter.contentPreview}
             </p>
             <div className="flex">
-                <a className="py-2 px-4 w-32 text-center bg-primary text-primary-content rounded-sm hover:bg-secondary transition-colors ease-in-out duration-200 cursor-pointer"
+                <a className="py-2 px-4 w-32 text-center bg-primary text-primary-content rounded-xs hover:bg-secondary transition-colors ease-in-out duration-200 cursor-pointer"
                    href={newsletter.browserUrl}>
                     Weiterlesen...
                 </a>
@@ -66,17 +66,17 @@ function Article(newsletter: Newsletter) {
 }
 
 function Empty() {
-    return <div className="rounded bg-white dark:bg-base-200 text-text border-l-4 border-primary w-full max-w-5xl">
+    return <div className="rounded-sm bg-white dark:bg-base-200 text-text border-l-4 border-primary w-full max-w-5xl">
         <div className="p-4">
             <h2 className="mt-0">Kein Newsletter gefunden</h2>
             <small>von fintag Mitarbeiter</small>
             <div className="my-3 animate-pulse flex flex-col gap-y-2">
-                <div className="h-3 bg-slate-200 dark:bg-slate-400 rounded"></div>
-                <div className="h-3 bg-slate-200 dark:bg-slate-400 rounded"></div>
-                <div className="h-3 bg-slate-200 dark:bg-slate-400 rounded"></div>
+                <div className="h-3 bg-slate-200 dark:bg-slate-400 rounded-sm"></div>
+                <div className="h-3 bg-slate-200 dark:bg-slate-400 rounded-sm"></div>
+                <div className="h-3 bg-slate-200 dark:bg-slate-400 rounded-sm"></div>
             </div>
             <div className="flex">
-                <a className="py-2 px-4 w-32 text-center bg-primary text-primary-content rounded-sm hover:bg-secondary transition-colors ease-in-out duration-200 cursor-pointer"
+                <a className="py-2 px-4 w-32 text-center bg-primary text-primary-content rounded-xs hover:bg-secondary transition-colors ease-in-out duration-200 cursor-pointer"
                    href="https://newsletter.fintag.de">
                     Weiterlesen...
                 </a>

@@ -1,6 +1,6 @@
 // @ts-check
 import {defineConfig} from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
@@ -14,11 +14,10 @@ export default defineConfig({
     redirects: {
         "/newsletter/index.xml": "/newsletter/rss.xml",
     },
+    vite: {
+        plugins: [tailwindcss()]
+    },
     integrations: [
-        tailwind({
-            applyBaseStyles: false,
-            nesting: true
-        }),
         mdx(),
         react(),
         sitemap(),

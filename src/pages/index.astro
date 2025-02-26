@@ -33,7 +33,7 @@ const partner = await Astro.glob<{default: ImageMetadata}>("/src/assets/partner/
 	</Fragment>
 	<main class="my-6">
 		<section class="relative p-5 h-80 flex -z-50" aria-hidden="true">
-			<div class="-z-10 bg-primary text-primary-content dark:bg-base-300 dark:text-primary rounded-sm overflow-clip text-justify p-4 backdrop-blur-3xl absolute md:w-96 inset-5 md:left-auto md:top-auto md:-bottom-5">
+			<div class="-z-10 bg-primary text-primary-content dark:bg-base-300 dark:text-primary rounded-xs overflow-clip text-justify p-4 backdrop-blur-3xl absolute md:w-96 inset-5 md:left-auto md:top-auto md:-bottom-5">
 				<h3 class="text-xl text-left mt-0">
 					<span class="uppercase">BEST ADVICE</span> in der ganz­heit­lichen Finanz­dienst­leistung
 				</h3>
@@ -43,7 +43,7 @@ const partner = await Astro.glob<{default: ImageMetadata}>("/src/assets/partner/
 			</span>
 			</div>
 			<div class="-z-20 absolute inset-0">
-				<div class="bg-white/10 backdrop-blur-sm absolute inset-0"></div>
+				<div class="bg-white/10 backdrop-blur-xs absolute inset-0"></div>
 				<Image src={Hero} alt="" loading="eager"
 					   class="h-full w-full object-cover"
 					   widths={[240, 480, 960, 960*2, Hero.width]}
@@ -66,12 +66,12 @@ const partner = await Astro.glob<{default: ImageMetadata}>("/src/assets/partner/
 		<section class="p-4 mb-12 bg-base-200 dark:bg-base-300">
 			<h2 class="mt-0 text-center">Der fintag Newsletter</h2>
 			<div class="grid place-items-center min-h-40">
-				<div class="rounded bg-white dark:bg-base-200 text-text border-l-4 border-primary w-full max-w-5xl">
+				<div class="rounded-sm bg-white dark:bg-base-200 text-text border-l-4 border-primary w-full max-w-5xl">
 					<div class="p-4">
 						<h2 class="mt-0 line-clamp-2">{latestNewsletter.data.title}</h2>
 						<p class="flex gap-1 my-1 flex-wrap">
 							{latestNewsletter.data.categories.map(category =>
-								<small class="px-2 rounded-sm border border-base-300">
+								<small class="px-2 rounded-xs border border-base-300">
 									{category}
 								</small>
 							)}
@@ -98,7 +98,7 @@ const partner = await Astro.glob<{default: ImageMetadata}>("/src/assets/partner/
 							<PostExcerpt post={latestNewsletter} words={100} maxLength={1000} addEllipsis={false} />
 						</p>
 						<div class="flex">
-							<a class="py-2 px-4 w-32 text-center bg-primary text-primary-content rounded-sm hover:bg-secondary transition-colors ease-in-out duration-200 cursor-pointer"
+							<a class="py-2 px-4 w-32 text-center bg-primary text-primary-content rounded-xs hover:bg-secondary transition-colors ease-in-out duration-200 cursor-pointer"
 							   href={`/newsletter/${latestNewsletter.slug}`}>
 								Weiterlesen...
 							</a>
@@ -156,7 +156,7 @@ const partner = await Astro.glob<{default: ImageMetadata}>("/src/assets/partner/
 				Hinter der Glastür links finden Sie das Büro der fintag, rechts gegenüber ist der Meeting Raum der
 				fintag, wo wir Sie in den allermeisten fällen empfangen werden.
 			</p> }
-			<p class="leading-snug mb-2 text-primary-content bg-primary p-2 rounded-sm">
+			<p class="leading-snug mb-2 text-primary-content bg-primary p-2 rounded-xs">
 				<strong>Bitte zögern Sie nicht uns anzurufen</strong>, das Areal ist groß und für viele
 				unübersichtlich. Wir helfen ihnen gerne weiter und holen Sie auch sehr gerne ab, unsere Dienstleistung
 				beginnt nicht erst am Eingang unseres Büros.
