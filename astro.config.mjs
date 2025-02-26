@@ -11,6 +11,9 @@ import fs from 'node:fs';
 // https://astro.build/config
 export default defineConfig({
     site: "https://www.fintag.de",
+    redirects: {
+        "/newsletter/index.xml": "/newsletter/rss.xml",
+    },
     integrations: [
         tailwind({
             applyBaseStyles: false,

@@ -37,6 +37,13 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
         <meta name="twitter:title" content={title}>
         <meta name="twitter:description" content={description}>
         <meta name="twitter:image" content={openGraphImageUrl}>
+
+        <link
+                rel="alternate"
+                type="application/rss+xml"
+                title="fintag Newsletter"
+                href={new URL("/newsletter/rss.xml", Astro.site)}
+        />
     </Fragment>
 
     <main class="mx-auto px-4 lg:px-24 container my-6">

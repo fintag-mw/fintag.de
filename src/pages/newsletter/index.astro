@@ -16,6 +16,15 @@ const count = function(newsletters: Array<newsletterType>, dataName: ("categorie
 ---
 
 <Layout title="fintag - Newsletter Archiv">
+    <Fragment slot="head">
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="fintag Newsletter"
+            href={new URL("/newsletter/rss.xml", Astro.site)}
+        />
+    </Fragment>
+
     <main class="px-4 ">
         <section class="lg:px-24 container mx-auto">
             <h1>Newsletter Archiv</h1>
