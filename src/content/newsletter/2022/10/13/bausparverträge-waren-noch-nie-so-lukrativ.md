@@ -1,5 +1,5 @@
 ---
-title: "Bausparverträge waren noch nie so Lukrativ!"
+title: "Bausparvertraege waren noch nie so Lukrativ!"
 description: "31.12.2022 ist Bauspartag! Bausparkassen haben bis ende des Jahres noch Zinsen von 1 bis 2 %."
 author: "Monika Sanders"
 tags: ["Sondernewsletter", "Bausparvertrag", "Bauspar", "Anlagechance", "Finanzierung", "Kapitalanlage"]
