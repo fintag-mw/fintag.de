@@ -15,6 +15,13 @@ export default defineConfig({
         // old RSS link
         "/newsletter/index.xml": "/newsletter/rss.xml",
 
+        // old tags without special cases for Unlaute
+        "/tags/vermögensübertrag/": "/tags/vermoegensuebertrag/",
+        "/tags/gesetzesänderung": "/tags/gesetzesaenderung",
+        "/tags/förderung/": "/tags/foerderung/",
+        "/tags/wohngebäudeversicherung/": "/tags/wohngebaeudeversicherung/",
+        "/tags/königswege": "/tags/koenigswege/",
+
         // published wrong slug initially
         "/newsletter/2024/02/14/message-aalen-mein-zuhause/": "/newsletter/2024/02/14/messe-aalen-mein-zuhause",
         "/newsletter/2022/10/13/bausparverträge-waren-noch-nie-so-lukrativ": "/newsletter/2022/10/13/bausparvertraege-waren-noch-nie-so-lukrativ/",
