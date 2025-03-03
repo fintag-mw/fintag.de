@@ -5,14 +5,14 @@ import type {ImageMetadata} from "astro";
 import PostExcerpt from '@igor.dvlpr/astro-post-excerpt'
 
 import Layout from '../layouts/Layout.astro';
-import Hero from "./img/hero.jpg"
-import Lageplan from "./img/Lageplan.png";
+import Hero from "./img/_hero.jpg"
+import Lageplan from "./img/_Lageplan.png";
 import BeraterHero from "../components/BeraterHero.astro";
-import NewsletterHero from "../components/NewsletterHero.tsx";
+import {compare} from "../utils";
 
 const newsletterCollection = await getCollection("newsletter");
 const latestNewsletter = newsletterCollection
-	.sort((a, b) => b.data.publishDate - a.data.publishDate)[0];
+	.sort((a, b) => compare(b.data.publishDate, a.data.publishDate))[0];
 
 const description = "Die fintag ist seit Jahrzehnten als Finanzdienstleister tätig. Unser Motto: Wir nehmen Finanzberatung sehr Persöhnlich.";
 
@@ -70,7 +70,7 @@ const partner = await Astro.glob<{default: ImageMetadata}>("/src/assets/partner/
 					<div class="p-4">
 						<h2 class="mt-0 line-clamp-2">{latestNewsletter.data.title}</h2>
 						<p class="flex gap-1 my-1 flex-wrap">
-							{latestNewsletter.data.categories.map(category =>
+							{latestNewsletter.data.categories?.map(category =>
 								<small class="px-2 rounded-xs border border-base-300">
 									{category}
 								</small>
