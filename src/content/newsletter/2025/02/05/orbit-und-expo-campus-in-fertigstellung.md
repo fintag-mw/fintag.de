@@ -3,7 +3,7 @@ title: "Orbit und Expo Campus in Fertigstellung"
 description: ""
 authors:
   - Monika Sanders
-tags: []
+tags: [ "Immobilien", "RVI", "New Franklin City", "Orbit", "Mannheim", "i-Live", "Expo Campus", "Hannover", "KfW", "Förderung", "Anlegen" ]
 categories: ["fintag Informiert"]
 publishDate: 2025-02-05T15:30:00+01:00
 draft: false
@@ -31,7 +31,7 @@ Für **alle** Apartments des Projektes EXPO Campus Hannover wurden von der Hausb
 KfW-Finanzierungsmittel (KfW 40 EE) beantragt und seitens der KfW zugesagt. **Auch bei heutigem Kauf steht dieses
 KfW Volumen zur Verfügung.**
 
-Die Highlight des KfW Programms sind:
+Die Highlights des KfW Programms sind:
 - KfW 40EE
 - 150.000 € Darlehen je Wohneinheit
 - Ab 1.79% Zins p.a.
@@ -43,4 +43,4 @@ Zögern Sie nicht, rufen Sie uns an !
 
 Beste Grüße
 
-<strong>Ihre fintag</strong>
+**Ihre fintag**

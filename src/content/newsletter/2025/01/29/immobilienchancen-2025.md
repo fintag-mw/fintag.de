@@ -3,7 +3,7 @@ title: "Immobilienchancen 2025 !"
 description: ""
 authors:
   - Monika Sanders
-tags: []
+tags: [ "Immobilien", "Anlegen" ]
 categories: ["fintag Informiert"]
 publishDate: 2025-01-29T15:30:00+01:00
 draft: false
@@ -26,4 +26,4 @@ Wir stehen unter den beigefügten Kontaktdaten gerne jederzeit zur Verfügung �
 
 Beste Grüße
 
-<strong>Ihre fintag</strong>
+**Ihre fintag**
