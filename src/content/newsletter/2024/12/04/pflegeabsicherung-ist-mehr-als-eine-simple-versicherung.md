@@ -8,8 +8,6 @@ categories: ["fintag Informiert"]
 publishDate: 2024-12-04T15:30:00+01:00
 draft: false
 ---
-import BeraterKarte from "/src/components/Newsletter/BeraterKarte.astro";
-
 ## – innovativ, flexibel – und auch im zeitnahen Intervall machbar
 
 Liebe Freunde der Finanzen,
@@ -19,10 +17,10 @@ Pflegeversicherung – das mag für die staatlichen Institutionen stimmen – we
 für sich und seine Familie vorsorgen möchte, der kann das
 
 1. Mit kleinem Mitteleinsatz
-1. Generationengesichert über Immobilien
-1. Unter Nutzung steuerlicher Vorteile
-1. Flexibel und individuell
-1. Nicht gebunden…
+2. Generationengesichert über Immobilien
+3. Unter Nutzung steuerlicher Vorteile
+4. Flexibel und individuell
+5. Nicht gebunden…
 
 Gestalten – ganz individuell
 
@@ -31,13 +29,9 @@ Freuen Sie sich auf die kleine News Reihe **fintag – Ihr Partner in Sachen qua
 Die Reihe informiert über
 
 1. Betreutes Wohnen PLUS – die individuelle Antwort auf eine optimale Pflegeversorgung in den eigenen 4 Wänden
-1. Best Ager Darlehen – beenden wir das Märchen, dass Kunden aus den Jahrgängen 1930-1964 keine frischen Finazmittel mehr erhalten können, um die Erhöhung der Rente/Verbesserung der Pflege zu gestalten
-1. Wir zeigen Ihnen gerne, wie Sie für sich persönlich/ für Ihre Eltern und Angehörige ein Belegungsrecht auf ca 600 Pflegeeinrichtungen aller Qualitäten in Deutschland erhalten können
-1. Auch und gerade für Kunden ab 55 können, im besten Sinne nachhaltige Invests mit hohen Steuervorteilen für die Absicherung ihrer Pflegesituation sichern
-1. Für Freunde von Aktien und Depots – wir zeigen Ihnen gerne, wie ein Depot – jederzeit verfügbar – gleichzeitig als lebenslange Pflegerente nutzbar werden kann.
+2. Best Ager Darlehen – beenden wir das Märchen, dass Kunden aus den Jahrgängen 1930-1964 keine frischen Finazmittel mehr erhalten können, um die Erhöhung der Rente/Verbesserung der Pflege zu gestalten
+3. Wir zeigen Ihnen gerne, wie Sie für sich persönlich/ für Ihre Eltern und Angehörige ein Belegungsrecht auf ca 600 Pflegeeinrichtungen aller Qualitäten in Deutschland erhalten können
+4. Auch und gerade für Kunden ab 55 können, im besten Sinne nachhaltige Invests mit hohen Steuervorteilen für die Absicherung ihrer Pflegesituation sichern
+5. Für Freunde von Aktien und Depots – wir zeigen Ihnen gerne, wie ein Depot – jederzeit verfügbar – gleichzeitig als lebenslange Pflegerente nutzbar werden kann.
 
 In Kürze mit der News Nr. 1: Erl und betreutes Wohnen PLUS
-
-<div className="flex">
-    <BeraterKarte berater="Monika Sanders" />
-</div>

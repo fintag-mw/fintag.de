@@ -10,8 +10,6 @@ publishDate: 2024-01-10T15:30:00+01:00
 lastmod: 2024-01-10T14:01:46+01:00
 draft: false
 ---
-import BeraterKarte from "/src/components/Newsletter/BeraterKarte.astro";
-
 # LAKRA 2024
 
 Auch im neuen Jahr gibt es wieder das Förder&shy;programm LAKRA des Landes
@@ -34,7 +32,3 @@ Unseren Infor&shy;mations&shy;flyer finden Sie hier: [LAKRA 2024 - Flyer web](/u
 ----
 
 Haben Sie weitere Fragen oder möchten eine Beratung kontaktieren Sie unsere Spezialistin für LAKRA:
-
-<div className="flex">
-    <BeraterKarte berater="Birgit Sanders" />
-</div>

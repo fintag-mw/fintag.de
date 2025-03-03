@@ -123,12 +123,14 @@ const {linktitle, title, description, author, authors, publishDate, lastmod, arc
         ]} lang="de-de">
             <slot />
 
-            {publishDate.getFullYear() >= 2025 &&
+            {publishDate.getFullYear() >= 2024 &&
                     <div class:list={[
                         "grid grid-cols-1 place-items-stretch gap-4 mt-6",
                         {"lg:grid-cols-2": authors && authors.length > 1}
                     ]}>
-                        {authors && authors.map((a: string) => <BeraterKarte berater={a} />)}
+                        {authors && authors
+                            .filter(a => a != "Team fintag")
+                            .map((a: string) => <BeraterKarte berater={a} />)}
                     </div>}
         </section>
 
