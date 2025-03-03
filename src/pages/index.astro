@@ -8,15 +8,14 @@ import Layout from '../layouts/Layout.astro';
 import Hero from "./img/_hero.jpg"
 import Lageplan from "./img/_Lageplan.png";
 import BeraterHero from "../components/BeraterHero.astro";
-import {compare} from "../utils";
+import PartnerSection from "../components/infra/PartnerSection.astro";
+import {compare} from "@utils";
 
 const newsletterCollection = await getCollection("newsletter");
 const latestNewsletter = newsletterCollection
 	.sort((a, b) => compare(b.data.publishDate, a.data.publishDate))[0];
 
 const description = "Die fintag ist seit Jahrzehnten als Finanzdienstleister tätig. Unser Motto: Wir nehmen Finanzberatung sehr Persöhnlich.";
-
-const partner = await Astro.glob<{default: ImageMetadata}>("/src/assets/partner/*.{png,jpg,jpeg,svg}");
 ---
 
 <Layout title="fintag Finanzdienstleistung- und Treuhand-AG" description={description}>
@@ -167,16 +166,7 @@ const partner = await Astro.glob<{default: ImageMetadata}>("/src/assets/partner/
 			<Picture src={Lageplan} widths={[400, 800, 1600, Lageplan.width]} alt="" />
 		</section>
 
-		<section class="p-4 mb-12 bg-primary dark:bg-base-300">
-			<h2 class="mt-0 text-primary-content dark:text-primary text-center">Unsere Partner</h2>
-			<div class="flex flex-wrap justify-center items-center gap-6">
-				{partner.map(p =>
-					<figure class="bg-white md:w-60 aspect-square p-4 rounded-3xl">
-						<Image src={p.default} alt="" class="object-contain w-full h-full"
-							   width="256" format="webp" quality="95" />
-					</figure>)}
-			</div>
-		</section>
+		<PartnerSection />
 	</main>
 
 </Layout>

@@ -1,0 +1,24 @@
+---
+import {Image} from "astro:assets";
+import type {ImageMetadata} from "astro";
+
+const partner = await Astro.glob<{default: ImageMetadata}>("./assets/partner/*.{png,jpg,jpeg,svg}");
+
+function getName(image : ImageMetadata) {
+    const path = image.src;
+    const fileName = path.substring(path.lastIndexOf("/"));
+
+    return fileName.replace('_', ' ').toUpperCase();
+}
+---
+
+<section class="p-4 mb-12 bg-primary dark:bg-base-300">
+    <h2 class="mt-0 text-primary-content dark:text-primary text-center">Unsere Partner</h2>
+    <div class="flex flex-wrap justify-center items-center gap-6">
+        {partner.map(p =>
+                <figure class="bg-white md:w-60 aspect-square p-4 rounded-3xl">
+                    <Image src={p.default} alt={getName(p.default)} class="object-contain w-full h-full"
+                           width="256" format="webp" quality="95" />
+                </figure>)}
+    </div>
+</section>
