@@ -5,15 +5,28 @@ import MediaCard from "../MediaCard.astro";
 import type {Berater} from "./Berater";
 import BeraterImage from "../BeraterImage.astro";
 
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
 interface Props {
     berater: string;
 }
 const { berater, class: className, ...rest } = Astro.props;
 const data = BeraterData[berater] as Berater;
+
+const images = import.meta.glob<{default: ImageMetadata}>("./assets/*.{png,jpg,jpeg,webp}");
+console.log(images);
 ---
 
 <MediaCard allowSide={true} class:list={[className]} {...rest}>
-    <BeraterImage berater={data} slot="image" />
+    {
+        data.Asset
+            ? <Image class="object-cover object-center w-full h-full"
+                     src={images[data.Asset]()}
+                     widths={[1080, 900, 650, 465]}
+                     alt={data.Name} />
+            : <BeraterImage berater={data} slot="image" />
+    }
 
     <h2 class="m-0 hyphens-auto" style={{color: data.Color ? data.Color : "" }}>{data.Name}</h2>
     <p class="my-2 text-base">

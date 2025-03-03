@@ -5,6 +5,7 @@ export type Berater = {
     Phone?: string,
     Fax?: string,
     LinkedIn?: string,
+    Asset?: string,
     Picture?: string,
     Image?: string,
     Qualifications: string[],
