@@ -3,50 +3,6 @@
 
 # Pretty Feed
 
-Styles an RSS/Atom feed, making it friendly for humans viewers, and adds a link
-to aboutfeeds.com for new user onboarding. See it in action:
-
-   https://interconnected.org/home/feed
-
-
-## How to use
-
-1. Download this XML stylesheet from the following URL and host it on your own
-   domain (this is a limitation of XSL in browsers):
-
-   https://github.com/genmon/aboutfeeds/blob/main/tools/pretty-feed-v3.xsl
-
-2. Include the XSL at the top of the RSS/Atom feed, like:
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="/PATH-TO-YOUR-STYLES/pretty-feed-v3.xsl" type="text/xsl"?>
-```
-
-3. Serve the feed with the following HTTP headers:
-
-```
-Content-Type: application/xml; charset=utf-8  # not application/rss+xml
-x-content-type-options: nosniff
-```
-
-(These headers are required to style feeds for users with Safari on iOS/Mac.)
-
-
-
-## Limitations
-
-- Styling the feed *prevents* the browser from automatically opening a
-  newsreader application. This is a trade off, but it's a benefit to new users
-  who won't have a newsreader installed, and they are saved from seeing or
-  downloaded obscure XML content. For existing newsreader users, they will know
-  to copy-and-paste the feed URL, and they get the benefit of an in-browser feed
-  preview.
-- Feed styling, for all browsers, is only available to site owners who control
-  their own platform. The need to add both XML and HTTP headers makes this a
-  limited solution.
-
-
 ## Credits
 
 pretty-feed is based on work by lepture.com:
@@ -80,10 +36,10 @@ This file is in BETA. Please test and contribute to the discussion:
       <body class="bg-white">
         <nav class="container-md px-3 py-2 mt-2 mt-md-5 mb-5 markdown-body">
           <p class="bg-yellow-light ml-n1 px-1 py-1 mb-1">
-            <strong>This is a web feed,</strong> also known as an RSS feed. <strong>Subscribe</strong> by copying the URL from the address bar into your newsreader.
+            <strong>Dieses Dokument ist ein Web-Feed,</strong> auch bekannt als RSS-Feed. Sie können diesen Feed <strong>Abonnieren</strong> indem Sie die URL in der Addresszeile ihres Browsers in ihren Newsreader einfügen.
           </p>
           <p class="text-gray">
-            Visit <a href="https://aboutfeeds.com">About Feeds</a> to get started with newsreaders and subscribing. It’s free.
+            Besuchen Sie <a href="https://aboutfeeds.com">About Feeds (Englisch)</a> um mehr über Newsreader und RSS zu erfahren.
           </p>
         </nav>
         <div class="container-md px-3 py-3 markdown-body">
@@ -107,7 +63,7 @@ This file is in BETA. Please test and contribute to the discussion:
                 <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
               </svg>
 
-              Web Feed Preview
+              Web-Feed Vorschau
             </h1>
             <h2><xsl:value-of select="/rss/channel/title"/></h2>
             <p><xsl:value-of select="/rss/channel/description"/></p>
@@ -115,7 +71,7 @@ This file is in BETA. Please test and contribute to the discussion:
               <xsl:attribute name="href">
                 <xsl:value-of select="/rss/channel/link"/>
               </xsl:attribute>
-              Visit Website &#x2192;
+              Webseite Besuchen &#x2192;
             </a>
           </header>
           <h2>Recent Items</h2>
@@ -130,7 +86,7 @@ This file is in BETA. Please test and contribute to the discussion:
                 </a>
               </h3>
               <small class="text-gray">
-                Published: <xsl:value-of select="pubDate" />
+                Veröffentlicht: <xsl:value-of select="pubDate" />
               </small>
             </div>
           </xsl:for-each>
