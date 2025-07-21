@@ -1,5 +1,5 @@
 ---
-title: "Orbit Mannheim"
+title: "Ergebnisse aus den ersten tatsächlichen Vermietungen Orbit in Mannheim"
 description: ""
 authors:
   - Monika Sanders
