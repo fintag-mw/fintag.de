@@ -22,20 +22,20 @@ sind die Badezimmerfliesen, die durch innovative 3D-Drucktechnologie hergestellt
 Schimmel keine Chance! Zudem kommen ausschließlich hochwertige Materialien zum Einsatz. Die Küchen 
 sind komplett aus Metall gefertigt und somit magnetisch, was für Studierende äußerst praktisch ist.
 
-```bilder```
+![](img1.png)
 
 Ein weiteres Highlight ist der Holländische Pavillon, der von den renommierten Architekten MVRDV, die 
 bereits 2000 bei der EXPO den Pavillon entworfen haben, wieder zum Leben erweckt wurde. Die Holzstämme, 
 die den Pavillon stützten, wurden von Tischler Jan Narten von more than wood verarbeitet und in Form von 
 Tischen und Sitzgelegenheiten in den Community Räumen integriert.
 
-```bilder```
+![](img2.png)
 
 Es gibt im Campus in Hannover derzeit noch wenige vereinzelte Einheiten (ca. 5 Stück) zwischen 
 221.000 – 244.000 € - der Rabatt von bis zu 8.000 € auf den Gesamtkaufpreis steht immer noch zur Verfügung! 
 Daher melden Sie sich gerne bei Interesse bei uns.
 
-```bilder```
+![](img3.png)
 
 Als Ankündigung der Zukunftspläne der Firma i-live soll schon bald ein neuer Studenten Campus in Saarbrücken 
 eröffnet werden, wir freuen uns, sobald wir alle Daten und Fakten haben, Ihnen diese Mitzuteilen!
