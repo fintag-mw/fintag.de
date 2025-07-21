@@ -26,13 +26,13 @@ Ausstattungsmerkmale im Gebäude H nicht in jeder Wohneinheit vorhanden sind.
 Dieser Überblick verdeutlicht die unterschiedlichen Vermietungsmöglichkeiten, die sich insbesondere durch die hochwertige 
 und elegante Ausstattung der jeweiligen Objekte ergeben.
 
-![_img1.jpg]
+![](_img1.jpg)
 
 **Mietpreisentwicklung im Vergleich: Orbit & H**
 
 Hier eine Zusammenfassung der aktuellen Mieten für verschiedene Wohnungstypen:
 
-![_img2.png]
+![](_img2.png)
 
 **Interessant ist der Vergleich von Kalt und Warmmiete.**
 
@@ -43,7 +43,7 @@ Hier eine Zusammenfassung der aktuellen Mieten für verschiedene Wohnungstypen:
 
 Der Kapitalanleger erhält also aus der Miete eine deutlich höheren Nettomietanteil.
 
-![_img3.png]
+![](_img3.png)
 
 **Aktuelle Vermietungsnachfrage im Orbit**
 
