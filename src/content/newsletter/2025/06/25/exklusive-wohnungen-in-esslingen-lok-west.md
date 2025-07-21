@@ -5,7 +5,7 @@ authors:
   - Monika Sanders
 tags: [ "Immobilien", "Kapitalanlage", "Esslingen", "LOK.WEST", "RVI", "Citadis", "Desiro" ]
 categories: [ "fintag Informiert" ]
-publishDate: 2025-02-24T15:30:00+01:00
+publishDate: 2025-06-25T15:30:00+01:00
 draft: false
 ---
 
