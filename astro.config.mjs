@@ -7,10 +7,14 @@ import sitemap from '@astrojs/sitemap';
 import opengraphImages, {presets} from "astro-opengraph-images";
 
 import fs from 'node:fs';
+import {opengraphFintagRenderer} from "./src/opengraph-fintag-renderer.tsx";
 
 // https://astro.build/config
 export default defineConfig({
     site: "https://www.fintag.de",
+    build: {
+        redirects: false
+    },
     redirects: {
         // old sitemap link
         "/index.xml": "/sitemap-index.xml",
@@ -59,9 +63,10 @@ export default defineConfig({
                         style: "normal",
                         data: fs.readFileSync("node_modules/@fontsource/noto-sans/files/noto-sans-latin-400-normal.woff")
                     }
-                ]
+                ],
+                verbose: true
             },
-            render: presets.simpleBlog
+            render: opengraphFintagRenderer
         })],
     publicDir: './static'
 });

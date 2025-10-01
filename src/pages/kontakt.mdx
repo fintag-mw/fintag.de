@@ -1,0 +1,19 @@
+---
+layout: "/src/layouts/LayoutInfopage.astro"
+title: "Kontakt"
+description: "Vereinbaren Sie einen Termin mit uns."
+date: 2025-09-25T00:00:00+02:00
+draft: false
+---
+import ContactForm from "@components/ContactForm";
+
+
+<section class="mx-auto px-4 mb-12 lg:px-24 container max-w-2xl">
+    <h1 class="text-center">Kontakt</h1>
+    <p class="mb-6 text-justify">
+        Nehmen Sie kontakt mit uns auf. Möchten Sie ein Erstgespräch mit uns vereinbaren beschreiben Sie bitte
+        kurz Ihr Vorhaben und wir melden uns baldmöglichst bei Ihnen.
+    </p>
+
+    <ContactForm client:load />
+</section>

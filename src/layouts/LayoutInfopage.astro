@@ -1,9 +1,31 @@
 ---
 import Layout from "./Layout.astro";
+import {getImagePath} from "astro-opengraph-images";
 const {frontmatter} = Astro.props;
+
+const openGraphImageUrl = getImagePath({ url: Astro.url, site: Astro.site });
 ---
 
 <Layout title={`fintag - ${frontmatter.title}`} description={frontmatter.description}>
+    <Fragment slot="head">
+        <!-- Open Graph -->
+        <meta property="og:site_name" content="fintag" />
+        <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site) } />
+        <meta property="og:logo" content="https://www.fintag.de/img/fintag_logo.svg" />
+        <meta property="og:locale" content="de_de" />
+        <meta property="og:type" content="Article" />
+        <meta property="og:title" content={`fintag - ${frontmatter.title}`} />
+        <meta property="og:description" content={frontmatter.description} />
+        <meta property="og:image" content={openGraphImageUrl} />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content={Astro.site}>
+        <meta property="twitter:url" content={new URL(Astro.url.pathname, Astro.site) }>
+        <meta name="twitter:title" content={frontmatter.title}>
+        <meta name="twitter:description" content={frontmatter.description}>
+        <meta name="twitter:image" content={openGraphImageUrl}>
+    </Fragment>
 
     <main class="mx-auto px-4 lg:px-24 container my-6">
         <section class:list={[

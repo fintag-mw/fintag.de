@@ -4,6 +4,7 @@ import Layout from "@layouts/Layout.astro";
 import NewsletterList from "@components/NewsletterList.astro";
 import {makeLinkSafe, compare} from "../../utils";
 import Badge from "../../components/Badge.astro";
+import {getImagePath} from "astro-opengraph-images";
 
 type newsletterType = CollectionEntry<'newsletter'>;
 const allNewsletter  = await getCollection("newsletter") as Array<newsletterType>;
@@ -13,10 +14,30 @@ const tags = new Set(allNewsletter.flatMap(n => n.data.tags).filter(t => typeof(
 const count = function(newsletters: Array<newsletterType>, dataName: ("categories" | "tags" | "authors"), item: any) {
     return newsletters.filter(n => (n.data[dataName] ?? []).indexOf(item) >= 0).length
 }
+
+const openGraphImageUrl = getImagePath({ url: Astro.url, site: Astro.site });
 ---
 
 <Layout title="fintag - Newsletter Archiv">
     <Fragment slot="head">
+        <!-- Open Graph -->
+        <meta property="og:site_name" content="fintag" />
+        <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site) } />
+        <meta property="og:logo" content="https://www.fintag.de/img/fintag_logo.svg" />
+        <meta property="og:locale" content="de_de" />
+        <meta property="og:type" content="Article" />
+        <meta property="og:title" content="fintag - Newsletter" />
+        <meta property="og:description" content="Hier finden Sie alle Newsletter der fintag" />
+        <meta property="og:image" content={openGraphImageUrl} />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content={Astro.site}>
+        <meta property="twitter:url" content={new URL(Astro.url.pathname, Astro.site) }>
+        <meta name="twitter:title" content="fintag - Newsletter">
+        <meta name="twitter:description" content="Hier finden Sie alle Newsletter der fintag">
+        <meta name="twitter:image" content={openGraphImageUrl}>
+
         <link
             rel="alternate"
             type="application/rss+xml"

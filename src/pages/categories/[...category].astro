@@ -3,8 +3,8 @@ import type { GetStaticPaths } from "astro";
 import {type CollectionEntry, getCollection} from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import NewsletterList from "../../components/NewsletterList.astro";
-import NewsletterItem from "../../components/NewsletterItem.astro";
 import {makeLinkSafe} from "../../utils";
+import {getImagePath} from "astro-opengraph-images";
 
 type newsletterType = CollectionEntry<'newsletter'>;
 interface Props {
@@ -24,9 +24,38 @@ export const getStaticPaths = (async () => {
 
 const { category, allNewsletter }: Props = Astro.props;
 const newsletters = allNewsletter.filter(n => n.data.tags && n.data.categories!.includes(category!));
+
+const openGraphImageUrl = getImagePath({ url: Astro.url, site: Astro.site });
 ---
 
 <Layout title={`fintag - ${category}`} description={`Newsletter mit der Kategorie ${category}.`}>
+    <Fragment slot="head">
+        <!-- Open Graph -->
+        <meta property="og:site_name" content="fintag" />
+        <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site) } />
+        <meta property="og:logo" content="https://www.fintag.de/img/fintag_logo.svg" />
+        <meta property="og:locale" content="de_de" />
+        <meta property="og:type" content="Article" />
+        <meta property="og:title" content={`fintag - ${category}`} />
+        <meta property="og:description" content={`Newsletter mit der Kategorie ${category}.`} />
+        <meta property="og:image" content={openGraphImageUrl} />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content={Astro.site}>
+        <meta property="twitter:url" content={new URL(Astro.url.pathname, Astro.site) }>
+        <meta name="twitter:title" content={`fintag - ${category}`}>
+        <meta name="twitter:description" content={`Newsletter mit der Kategorie ${category}.`} >
+        <meta name="twitter:image" content={openGraphImageUrl}>
+
+        <link
+                rel="alternate"
+                type="application/rss+xml"
+                title="fintag Newsletter"
+                href={new URL("/newsletter/rss.xml", Astro.site)}
+        />
+    </Fragment>
+
     <main class="mx-auto px-4 lg:px-24 container my-6">
         <h1>Kategorie: {category}</h1>
         <p>Newsletter mit der Kategorie {category}</p>
