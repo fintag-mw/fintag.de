@@ -57,7 +57,7 @@ Neben klassischen Micro-Apartments stehen auch **größere Einheiten mit WG-Pote
 
 - **Hohe Mietnachfrage** durch Universitätsstandort mit über 17.000 Studierenden
 - **Gesicherte Mieteinnahmen** über den Mietpool
-- **Degressive Afa 5% wählbar** sowohl für Neu- als auch für das BEstandsgebäude
+- **Degressive Afa 5% wählbar** sowohl für Neu- als auch für das Bestandsgebäude
 - **Diversifizierte Wohnformen:** Micro-Apartments + WG-taugliche Einheiten
 - **KfW-förderfähig** (55 / 70 EE) – attraktive Finanzierungsmöglichkeiten
 - **KfW Darlehen mit Tilgungszuschuß möglich**
